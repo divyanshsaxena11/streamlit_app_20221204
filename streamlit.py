@@ -34,3 +34,29 @@ caption= product_caption
 streamlit.write('Price: ', df2[1])
 streamlit.write('Sizes Available: ',df2[2])
 streamlit.write(df2[3])
+
+import streamlit as sl
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+import plotly.express as px
+from datetime import datetime
+
+# Title of App
+sl.write('Snowflake Warehouse Report')
+
+sl.header('st.button')
+if sl.button('hello world'):
+    sl.write('why hello there')
+else:
+    sl.write('good bye')
+
+# Side bar sections
+sb_loyalty = sl.sidebar.selectbox('KILO-Loyalty Reports',('Warehouse Usage','Alerts'))
+sb_teradata = sl.sidebar.selectbox('Teradata MIG Reports',('Warehouse Usage','Alerts'))
+
+# KILO Loyalty
+if sb_loyalty == 'Warehouse Usage':
+    sl.write('warehouse usage')
+    df = 1
+    sl.metric('views',df,45)
