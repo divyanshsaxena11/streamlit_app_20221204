@@ -60,3 +60,22 @@ if sb_loyalty == 'Warehouse Usage':
     sl.write('warehouse usage')
     df = 1
     sl.metric('views',df,45)
+
+# Side bar sections
+sb_teradata = st.sidebar.selectbox('Teradata MIG Reports',('Warehouse Usage','Alerts'))
+sb_loyalty = st.sidebar.selectbox('KILO-Loyalty Reports',('Warehouse Usage','Alerts'))
+
+
+if sb_teradata =='Warehouse Usage':
+    st.header('Teradata Warehouse Report')
+    col0, col1, col2,col3 = st.columns(4)
+    columns = [col0,col1,col2,col3]
+    cn = 0
+
+    for i in ['Monthly Usage','Avg Daily Cost', 'WH with >3k Credits','WH with >5k Credits']:
+        with columns[cn]:
+            delt = 5+(cn+5)*-2
+            st.metric(label = str(i),value= round(delt/0.5),delta = "{:.2%}".format(delt))
+            cn+=1
+            if cn >=4:
+                cn=0
