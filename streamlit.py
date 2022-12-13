@@ -51,15 +51,6 @@ if st.button('hello world'):
 else:
     st.write('good bye')
 
-# Side bar sections
-sb_loyalty = st.sidebar.selectbox('KILO-Loyalty Reports',('Warehouse Usage','Alerts'))
-sb_teradata = st.sidebar.selectbox('Teradata MIG Reports',('Warehouse Usage','Alerts'))
-
-# KILO Loyalty
-if sb_loyalty == 'Warehouse Usage':
-    st.write('warehouse usage')
-    df = 1
-    st.metric('views',df,45)
 
 # Side bar sections
 sb_teradata = st.sidebar.selectbox('Teradata MIG Reports',('Warehouse Usage','Alerts'))
