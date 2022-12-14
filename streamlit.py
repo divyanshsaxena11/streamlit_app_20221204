@@ -60,7 +60,7 @@ if sb_teradata =='Warehouse Usage':
     streamlit.write(df)
 
 
-    for i in ['Monthly Usage','Avg Daily Cost', 'WH with >3k Credits','WH with >5k Credits']:
+    for i in ['Monthly Usage','Avg Daily Cost', 'WH With 1-5K Credits','WH With >5k Credits']:
         with columns[cn]:
             delt = 5+(cn+5)*-2
             st.metric(label = str(i),value= round(delt/0.5),delta = "{:.2%}".format(delt))
