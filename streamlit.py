@@ -8,12 +8,6 @@ import pandas
 my_cnx = snowflake.connector.connect(**streamlit.secrets["Snowflake"])
 my_cur = my_cnx.cursor()
 # # run a snowflake query and put it all in a var called my_catalog
-my_cur.execute("show schemas;")
-my_catalog = my_cur.fetchall()
-# # put the dafta into a dataframe
-df = pandas.DataFrame(my_catalog)
-# # temp write the dataframe to the page so I Can see what I am working with
-streamlit.write(df)
 # # put the first column into a list
 # color_list = df[0].values.tolist()
 # # print(color_list)
@@ -45,11 +39,7 @@ from datetime import datetime
 # Title of App
 st.write('Snowflake Warehouse Report')
 
-st.header('st.button')
-if st.button('hello world'):
-    st.write('why hello there')
-else:
-    st.write('good bye')
+
 
 
 # Side bar sections
@@ -62,6 +52,13 @@ if sb_teradata =='Warehouse Usage':
     col0, col1, col2,col3 = st.columns(4)
     columns = [col0,col1,col2,col3]
     cn = 0
+    my_cur.execute("show schemas;")
+    my_catalog = my_cur.fetchall()
+    # # put the dafta into a dataframe
+    df = pandas.DataFrame(my_catalog)
+    # # temp write the dataframe to the page so I Can see what I am working with
+    streamlit.write(df)
+
 
     for i in ['Monthly Usage','Avg Daily Cost', 'WH with >3k Credits','WH with >5k Credits']:
         with columns[cn]:
@@ -70,3 +67,4 @@ if sb_teradata =='Warehouse Usage':
             cn+=1
             if cn >=4:
                 cn=0
+
