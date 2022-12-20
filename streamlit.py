@@ -102,4 +102,6 @@ if sb_teradata =='Warehouse Usage':
     c = alt.Chart(df2).mark_circle().encode(
         x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
     st.write(c)
-
+with st.spinner('Wait for it...'):
+    time.sleep(5)
+st.success('Done!')
